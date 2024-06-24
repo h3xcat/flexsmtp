@@ -5,7 +5,7 @@ import (
 	"flexsmtp/types"
 )
 
-func GetCommand(commandName string) types.Command {
+func GetCommand(commandName string) types.SMTPCommand {
 	switch commandName {
 	case "HELO":
 		return cmdhandlers.HELOCommand{}
@@ -15,6 +15,18 @@ func GetCommand(commandName string) types.Command {
 		return cmdhandlers.MAILCommand{}
 	case "QUIT":
 		return cmdhandlers.QUITCommand{}
+	case "HELP":
+		return cmdhandlers.HELPCommand{}
+	case "RCPT":
+		return cmdhandlers.RCPTCommand{}
+	case "DATA":
+		return cmdhandlers.DATACommand{}
+	case "RSET":
+		return cmdhandlers.RSETCommand{}
+	case "AUTH":
+		return cmdhandlers.AUTHCommand{}
+	case "BDAT":
+		return cmdhandlers.BDATCommand{}
 	default:
 		return nil
 	}

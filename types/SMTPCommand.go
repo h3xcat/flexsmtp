@@ -1,5 +1,5 @@
 package types
 
-type Command interface {
+type SMTPCommand interface {
 	Execute(client *SMTPClient, arg string)
 }

@@ -4,13 +4,13 @@ import (
 	"flexsmtp/types"
 )
 
-type MAILCommand struct{}
+type RCPTCommand struct{}
 
-func (cmd MAILCommand) Execute(client *types.SMTPClient, arg string) {
+func (cmd RCPTCommand) Execute(client *types.SMTPClient, arg string) {
 	if !client.HasHelo {
 		client.Writer.WriteString("503 Bad sequence of commands\r\n")
 		client.Writer.Flush()
 		return
 	}
-	// TODO: Implement MAIL command
+	// TODO: Implement RCPT command
 }

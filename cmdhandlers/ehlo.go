@@ -28,6 +28,9 @@ func (cmd EHLOCommand) Execute(client *types.SMTPClient, arg string) {
 	}
 	client.Name = arg
 	client.HasHelo = true
-	client.Writer.WriteString("250 " + client.Server.Name + " greets " + client.Name + "\r\n")
+	client.Writer.WriteString("250-" + client.Server.Name + " greets " + client.Name + "\r\n")
+	client.Writer.WriteString("250-8BITMIME\r\n")
+	client.Writer.WriteString("250-BINARYMIME\r\n")
+	client.Writer.WriteString("250 CHUNKING\r\n")
 	client.Writer.Flush()
 }
